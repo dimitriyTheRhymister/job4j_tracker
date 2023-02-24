@@ -10,6 +10,6 @@ public class ReportUsage {
         System.out.println(text2);
         JSONReport report3 = new JSONReport();
         String text3 = report3.generate("Report's name", "Report's body");
-        System.out.println(text3);
+        System.out.println("\"" + text3 + "\"");
     }
 }

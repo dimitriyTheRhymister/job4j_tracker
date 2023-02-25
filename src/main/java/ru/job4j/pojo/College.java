@@ -8,9 +8,10 @@ public class College {
         student.setFullName("Иван Иванович Иванов");
         student.setGroup(11);
         student.setDateOfAdmission(LocalDate.now());
+        String ln = System.lineSeparator();
         System.out.println("Студент: "
-                + student.getFullName() + ".\nГруппа: "
-                + student.getGroup() + ".\nДата поступления: "
+                + student.getFullName() + "." + ln + "Группа: "
+                + student.getGroup() + "." + ln + "Дата поступления: "
                 + student.getDateOfAdmission() + ".");
     }
 }

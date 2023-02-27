@@ -63,18 +63,4 @@ public class Tracker {
         }
         return Arrays.copyOf(result, counter);
     }
-
-//    public static void main(String[] args) {
-//        Tracker tracker = new Tracker();
-//        Item first = new Item("First");
-//        Item second = new Item("Second");
-//        tracker.add(first);
-//        tracker.add(second);
-//        tracker.add(new Item("First"));
-//        tracker.add(new Item("Second"));
-//        tracker.add(new Item("First"));
-//        tracker.delete(110);
-//        Item temp = new Item("fuck");
-//        tracker.replace(-10, temp);
-//    }
 }

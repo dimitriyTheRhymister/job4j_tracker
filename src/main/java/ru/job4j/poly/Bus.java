@@ -10,6 +10,7 @@ public class Bus implements Transport {
     }
 
     public double refuel(double quantity) {
-        return 0;
+        double pricePerGallon = 1.22;
+        return quantity * pricePerGallon;
     }
 }

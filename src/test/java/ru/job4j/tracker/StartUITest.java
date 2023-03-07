@@ -225,18 +225,18 @@ public class StartUITest {
     public void whenMultipleValidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1", "1", "1", "1", "1"}
+                new String[] {"1", "4", "3", "6", "2"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
         assertThat(selected).isEqualTo(1);
         int selected2 = input.askInt("Enter menu:");
-        assertThat(selected2).isEqualTo(1);
+        assertThat(selected2).isEqualTo(4);
         int selected3 = input.askInt("Enter menu:");
-        assertThat(selected3).isEqualTo(1);
+        assertThat(selected3).isEqualTo(3);
         int selected4 = input.askInt("Enter menu:");
-        assertThat(selected4).isEqualTo(1);
+        assertThat(selected4).isEqualTo(6);
         int selected5 = input.askInt("Enter menu:");
-        assertThat(selected5).isEqualTo(1);
+        assertThat(selected5).isEqualTo(2);
     }
 }

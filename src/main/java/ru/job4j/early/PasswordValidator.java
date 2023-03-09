@@ -10,34 +10,38 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
 
-        boolean hasUpperCase = false;
-        boolean hasSpecialSymbol = false;
-        boolean hasLowerCase = false;
-        boolean hasDigits = false;
-        for (int i = 0; i < password.length(); i++) {
-            if (Character.isUpperCase(password.charAt(i))) {
-                hasUpperCase = true;
+        boolean hasUpperCase = true;
+        boolean hasSpecialSymbol = true;
+        boolean hasLowerCase = true;
+        boolean hasDigits = true;
+        char[] charArr = password.toCharArray();
+        for (char c : charArr) {
+            if (Character.isUpperCase(c)) {
+                hasUpperCase = false;
+                continue;
             }
-            if (Character.isLowerCase(password.charAt(i))) {
-                hasLowerCase = true;
+            if (Character.isLowerCase(c)) {
+                hasLowerCase = false;
+                continue;
             }
-            if (Character.isDigit(password.charAt(i))) {
-                hasDigits = true;
+            if (Character.isDigit(c)) {
+                hasDigits = false;
+                continue;
             }
-            if (!Character.isLetterOrDigit(password.charAt(i))) {
-                hasSpecialSymbol = true;
+            if (!Character.isLetterOrDigit(c)) {
+                hasSpecialSymbol = false;
             }
         }
-        if (!hasUpperCase) {
+        if (hasUpperCase) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        if (!hasLowerCase) {
+        if (hasLowerCase) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        if (!hasDigits) {
+        if (hasDigits) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        if (!hasSpecialSymbol) {
+        if (hasSpecialSymbol) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
 
@@ -57,6 +61,6 @@ public class PasswordValidator {
     }
 
     public static void main(String[] args) {
-        System.out.println(validate("ruTrr&rr1245op"));
+        System.out.println(validate("ruTrrrr1245op"));
     }
 }

@@ -12,15 +12,22 @@ public class PhoneDictionary {
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : persons) {
-            if (person != null) {
-                String[] gets = {person.getName(), person.getSurname(), person.getPhone(), person.getAddress()};
-                for (String get : gets) {
-                    if (get.contains(key)) {
-                        result.add(person);
-                    }
-                }
+            if (person.getName().contains(key)
+                    || person.getSurname().contains(key)
+                    || person.getPhone().contains(key)
+                    || person.getAddress().contains(key)) {
+                result.add(person);
             }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.add(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        ArrayList<Person> persons = phones.find("Petr");
+        System.out.println(persons);
     }
 }

@@ -67,20 +67,4 @@ public class Tracker {
         }
         return result;
     }
-
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        Item item = new Item("Bug");
-        Item item2 = new Item("Bug2");
-        tracker.add(item);
-        tracker.add(item2);
-        int id = item.getId();
-        int id2 = item2.getId();
-        System.out.println(id);
-        System.out.println(id2);
-
-//        tracker.delete(id);
-        tracker.delete(id2);
-        System.out.println(tracker.findAll());
-    }
 }

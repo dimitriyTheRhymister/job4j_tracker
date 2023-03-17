@@ -84,7 +84,6 @@ public class TrackerTest {
         tracker.add(item);
         int id = item.getId();
         boolean result = tracker.delete(id);
-//        assertThat(tracker.findById(id).getName()).isEqualTo(null);
         assertThat(result).isTrue();
     }
 
@@ -94,7 +93,6 @@ public class TrackerTest {
         Item item = new Item("Bug");
         tracker.add(item);
         boolean result = tracker.delete(1000);
-//        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         assertThat(result).isFalse();
     }
 }

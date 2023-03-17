@@ -49,7 +49,7 @@ public class StartUITest {
         actions.add(new DeleteAction(out));
         actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName()).isNull();
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 
     @Test

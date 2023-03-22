@@ -10,17 +10,14 @@ public class BankService {
     }
 
     public boolean deleteUser(String passport) {
-        for (User key : users.keySet()) {
-            if (Objects.equals(key.getPassport(), passport)) {
-                users.remove(key);
-                return true;
-            }
-        }
-        return false;
+        return users.remove(new User(passport, "")) != null;
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
+        if (user == null) {
+            return;
+        }
         List<Account> list = getAccounts(user);
         if (!list.contains(account)) {
             list.add(account);
@@ -37,14 +34,12 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        List<Account> list = new ArrayList<>();
         User user = findByPassport(passport);
         if (user != null) {
-            list = getAccounts(user);
-        }
-        for (Account account : list) {
-            if (Objects.equals(account.getRequisite(), requisite)) {
-                return account;
+            for (Account account : getAccounts(user)) {
+                if (Objects.equals(account.getRequisite(), requisite)) {
+                    return account;
+                }
             }
         }
         return null;
@@ -57,15 +52,8 @@ public class BankService {
         if (accountSrc == null || accountDest == null || accountSrc.getBalance() < amount) {
             return false;
         }
-        User user = findByPassport(srcPassport);
-        List<Account> list = getAccounts(user);
-
-        if (list.contains(accountDest)) {
-            accountDest.setBalance(accountDest.getBalance() + accountSrc.getBalance());
-        }
-        if (list.contains(accountSrc)) {
-            accountSrc.setBalance(accountSrc.getBalance() - amount);
-        }
+        accountDest.setBalance(accountDest.getBalance() + accountSrc.getBalance());
+        accountSrc.setBalance(accountSrc.getBalance() - amount);
         return true;
     }
 

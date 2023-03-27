@@ -61,13 +61,19 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        List<Label> labels = averageScoreBySubject(pupils);
-        List<Label> labels2 = new ArrayList<>();
-        for (Label label : labels) {
-            Label label2 = new Label(label.name(), label.score() * pupils.size());
-            labels2.add(label2);
+        List<Label> labels = new ArrayList<>();
+        Map<String, Integer> map = new LinkedHashMap<>();
+        for (Pupil pupil : pupils) {
+            for (Subject subject : pupil.subjects()) {
+                map.computeIfPresent(subject.name(), (key, value) -> value + subject.score());
+                map.putIfAbsent(subject.name(), subject.score());
+            }
         }
-        labels2.sort(Comparator.naturalOrder());
-        return labels2.get(labels.size() - 1);
+        for (String key : map.keySet()) {
+            Label label = new Label(key, map.get(key));
+            labels.add(label);
+        }
+        labels.sort(Comparator.naturalOrder());
+        return labels.get(labels.size() - 1);
     }
 }

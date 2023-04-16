@@ -93,7 +93,7 @@ public class BankService {
      * @return возвращает true, если перевод прошёл успешно и false,
      * если отсутствуют необходимые для перевода счет отправителя или получателя
      * или если на счёте отправителя недостаточно средств для перевода
-     */
+//     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         Account accountDest = findByRequisite(destPassport, destRequisite);

@@ -30,8 +30,7 @@ public class AnalyzeByMap {
         return labels;
     }
 
-    public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        List<Label> labels = new ArrayList<>();
+    private static Map<String, Integer> tempMap(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
@@ -39,6 +38,12 @@ public class AnalyzeByMap {
                 map.putIfAbsent(subject.name(), subject.score());
             }
         }
+        return map;
+    }
+
+    public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
+        List<Label> labels = new ArrayList<>();
+        Map<String, Integer> map = tempMap(pupils);
         for (String key : map.keySet()) {
             Label label = new Label(key, map.get(key) / (double) pupils.size());
             labels.add(label);
@@ -62,13 +67,7 @@ public class AnalyzeByMap {
 
     public static Label bestSubject(List<Pupil> pupils) {
         List<Label> labels = new ArrayList<>();
-        Map<String, Integer> map = new LinkedHashMap<>();
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                map.computeIfPresent(subject.name(), (key, value) -> value + subject.score());
-                map.putIfAbsent(subject.name(), subject.score());
-            }
-        }
+        Map<String, Integer> map = tempMap(pupils);
         for (String key : map.keySet()) {
             Label label = new Label(key, map.get(key));
             labels.add(label);

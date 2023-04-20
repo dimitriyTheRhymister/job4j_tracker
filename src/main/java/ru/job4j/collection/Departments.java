@@ -7,10 +7,10 @@ public class Departments {
     public static List<String> fillGaps(List<String> deps) {
         Set<String> tmp = new LinkedHashSet<>();
         for (String value : deps) {
-            StringBuilder start = new StringBuilder();
+            String start = "";
             for (String el : value.split("/")) {
-                tmp.add((start + "/" + el).substring(1));
-                start.append("/").append(el);
+                start += "".equals(start) ? el : "/" + el;
+                tmp.add(start);
             }
         }
         return new ArrayList<>(tmp);

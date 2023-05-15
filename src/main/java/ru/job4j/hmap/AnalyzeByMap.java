@@ -34,8 +34,7 @@ public class AnalyzeByMap {
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                map.computeIfPresent(subject.name(), (key, value) -> value + subject.score());
-                map.putIfAbsent(subject.name(), subject.score());
+                map.merge(subject.name(), subject.score(), (oldValue, newValue) -> oldValue + subject.score());
             }
         }
         return map;

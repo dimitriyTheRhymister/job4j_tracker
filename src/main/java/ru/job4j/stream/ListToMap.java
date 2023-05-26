@@ -8,6 +8,6 @@ public class ListToMap {
 
     public static Map<String, Student> convert(List<Student> list) {
         return list.stream()
-                .collect(Collectors.toMap(Student::surname, Student -> Student, (existing, replacement) -> existing));
+                .collect(Collectors.toMap(Student::surname, student -> student, (existing, replacement) -> existing));
     }
 }

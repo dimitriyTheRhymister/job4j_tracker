@@ -6,10 +6,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StringCompareTest {
     @Test
     public void whenStringsAreEqualThenZero() {
+        String s1 = "Ivanov";
+        String s2 = "Ivanov";
         StringCompare compare = new StringCompare();
         int rst = compare.compare(
-                "Ivanov",
-                "Ivanov"
+                s1,
+                s2
         );
         assertThat(rst).isEqualTo(0);
     }

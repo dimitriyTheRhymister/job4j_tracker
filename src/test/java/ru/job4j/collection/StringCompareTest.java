@@ -53,4 +53,14 @@ public class StringCompareTest {
         );
         assertThat(rst).isLessThan(0);
     }
+
+    @Test
+    public void whenLeftLengthGreaterThanRightLengthResultShouldBePositive() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "Petrova",
+                "Petrov"
+        );
+        assertThat(rst).isGreaterThan(0);
+    }
 }

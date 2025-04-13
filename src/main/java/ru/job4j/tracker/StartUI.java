@@ -9,7 +9,6 @@ import ru.job4j.tracker.output.Output;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Arrays;
 
 public class StartUI {
     private final Output out;

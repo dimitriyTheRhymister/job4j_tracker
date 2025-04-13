@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.job4j</groupId>
-    <artifactId>memTracker</artifactId>
+    <artifactId>job4j-tracker</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -144,20 +144,20 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>10.3.3</version>
+                        <version>10.17.0</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
                 <executions>
                     <execution>
                         <id>validate</id>
                         <phase>validate</phase>
-                        <configuration>
-                            <configLocation>checkstyle.xml</configLocation>
-                            <encoding>UTF-8</encoding>
-                            <consoleOutput>true</consoleOutput>
-                            <failsOnError>true</failsOnError>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        </configuration>
                         <goals>
                             <goal>check</goal>
                         </goals>

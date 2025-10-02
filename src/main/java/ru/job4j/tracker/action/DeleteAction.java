@@ -22,9 +22,9 @@ public class DeleteAction implements UserAction {
     public boolean execute(Input input, Store memTracker) throws SQLException {
         out.println("=== Delete item ===");
         int id = input.askInt("Enter id: ");
-        boolean b = memTracker.findById(id) != null;
-        memTracker.delete(id);
-        if (!b) {
+        boolean exists = memTracker.findById(id) != null;
+        if (exists) {
+            memTracker.delete(id);
             out.println("Заявка удалена успешно.");
         } else {
             out.println("Ошибка удаления заявки.");

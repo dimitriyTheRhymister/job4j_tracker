@@ -40,7 +40,9 @@ public class MemTracker implements Store {
 
     public void delete(int id) {
         int index = indexOf(id);
-        items.remove(index);
+        if (index != -1) {
+            items.remove(index);
+        }
     }
 
     public Item findById(int id) {

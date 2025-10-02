@@ -25,9 +25,12 @@ public class DeleteAllItems implements UserAction {
         List<Item> allItems = tracker.findAll();
         List<Integer> collect = allItems.stream()
                 .map(Item::getId).toList();
+        int count = 0;
         for (Integer integer : collect) {
             tracker.delete(integer);
+            count++;
         }
+        out.println("Удалено заявок: " + count);
         out.println("=== Все заявки удалены ===");
         return true;
     }

@@ -29,7 +29,7 @@ public class CreateManyItems implements UserAction {
             System.out.println("Заявка № " + i);
         }
         out.println("Добавлено заявок: " + count);
-        System.out.println("Добавлено заявок: " + count);
+        out.println("=== Все заявки добавлены ===");
         return true;
     }
 

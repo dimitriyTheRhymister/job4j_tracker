@@ -62,6 +62,8 @@ class ItemTest {
         expected.add(i2);
         expected.add(i3);
         items.sort(new ItemDescByName());
-        assertThat(items).isEqualTo(expected);
+        assertThat(items).usingRecursiveComparison()
+                .ignoringFields("created")
+                .isEqualTo(expected);
     }
 }

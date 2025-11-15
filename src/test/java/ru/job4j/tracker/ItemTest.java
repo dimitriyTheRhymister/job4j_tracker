@@ -26,7 +26,9 @@ class ItemTest {
         expected.add(i2);
         expected.add(i1);
         Collections.sort(items);
-        assertThat(items).isEqualTo(expected);
+        assertThat(items).usingRecursiveComparison()
+                .ignoringFields("created")
+                .isEqualTo(expected);
     }
 
     @Test
@@ -44,7 +46,9 @@ class ItemTest {
         expected.add(i2);
         expected.add(i3);
         items.sort(new ItemAscByName());
-        assertThat(items).isEqualTo(expected);
+        assertThat(items).usingRecursiveComparison()
+                .ignoringFields("created")
+                .isEqualTo(expected);
     }
 
     @Test

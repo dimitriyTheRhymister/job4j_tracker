@@ -11,7 +11,7 @@ import ru.job4j.toone.UserMessenger;
 
 import java.util.List;
 
-public class PatricipatesRun {
+public class ParticipatesRun {
     public static void main(String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
